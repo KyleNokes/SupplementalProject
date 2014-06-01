@@ -86,16 +86,29 @@
     <ClCompile Include="TextArea.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="CheckBox.h" />
     <ClInclude Include="FlowManager.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="RadioButton.h" />
+    <ClInclude Include="RadioButtonGroup.h" />
     <ClInclude Include="TextArea.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="mytexture.bmp" />
+    <ClInclude Include="TextField.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="dslct.bmp" />
+    <Image Include="label.bmp" />
+    <Image Include="mytexture.bmp" />
+    <Image Include="otherText.bmp" />
+    <Image Include="radDesel.bmp" />
+    <Image Include="radSelect.bmp" />
+    <Image Include="selct.bmp" />
+    <Image Include="textarea.bmp" />
+    <Image Include="uglyButton.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

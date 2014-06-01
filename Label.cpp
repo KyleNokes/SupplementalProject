@@ -9,43 +9,59 @@ Label::~Label()
 {
 }
 
-Label::Label(const char* _text, SDL_Color _colour, SDL_Colour _txtColour, Panel* parentSurface)
+//Coloured text with transparent background
+Label::Label(int _x, int _y, const char* _text, SDL_Colour _txtColour, Panel* _parent)
 {
-	parent = parentSurface;
+	x = _x;
+	y = _y;
+	parent = _parent;
+	labelText = _text;
+	txtColour = _txtColour;
+	background = TTF_RenderText_Blended(font, labelText, txtColour);
+	coloured = true;
+}
+
+//Coloured text with Coloured background
+Label::Label(int _x, int _y, const char* _text, SDL_Color _colour, SDL_Colour _txtColour, Panel* _parent)
+{
+	x = _x;
+	y = _y;
+	parent = _parent;
 	colour = _colour;
 	labelText = _text;
 	txtColour = _txtColour;
-	message = TTF_RenderText(font, labelText, txtColour, colour);
+	background = TTF_RenderText(font, labelText, txtColour, colour);
+	coloured = true;
 }
 
-Label::Label(const char* _text, const char* _filename, SDL_Colour _txtColour, Panel* parentSurface)
+Label::Label(int _x, int _y, const char* _text, const char* _filename, SDL_Colour _txtColour, Panel* _parent)
 {
-	parent = parentSurface;
+	x = _x;
+	y = _y;
+	parent = _parent;
 	background = SDL_LoadBMP(_filename);
 	labelText = _text;
 	txtColour = _txtColour;
-	message = TTF_RenderText_Blended(font, labelText, txtColour);
-	SDL_BlitSurface(message, NULL, background, NULL);
 }
-Label::Label(const char* _text, SDL_Surface _background, SDL_Colour _txtColour, Panel* parentSurface)
+Label::Label(int _x, int _y, const char* _text, SDL_Surface _background, SDL_Colour _txtColour, Panel* _parent)
 {
-	parent = parentSurface;
+	x = _x;
+	y = _y;
+	parent = _parent;
 	background = &_background;
 	labelText = _text;
 	txtColour = _txtColour;
-	message = TTF_RenderText_Blended(font, labelText, txtColour);
-	SDL_BlitSurface(message, NULL, background, NULL);
 }
-void Label::Initialize()
+void Label::Render()
 {
-	renderer = parent->renderer;
-	TTF_Init();
-	font = TTF_OpenFont("Arial.ttf", 20);
-	texture = SDL_CreateTextureFromSurface(renderer, background);
-	SDL_FreeSurface(background);
-	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
-	SDL_RenderPresent(renderer);
-
-	SDL_Delay(2000);
+	position->x = parent->width - (parent->width - x);
+	position->y = parent->height - (parent->height - y);
+	if (!coloured)
+	{
+		message = TTF_RenderText_Blended(font, labelText, txtColour);
+		txtPos->x = background->clip_rect.x + (background->w / 2) - message->clip_rect.w / 2;
+		txtPos->y = background->clip_rect.y + (background->h / 2) - message->clip_rect.h / 2;
+		SDL_BlitSurface(message, NULL, background, txtPos);
+	}
+	SDL_BlitSurface(background, NULL, parent->background, position);
 }

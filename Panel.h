@@ -1,12 +1,13 @@
+#pragma once
 #include <SDL.h>
-#include "FlowManager.h"
+#ifndef PANEL_H
+#define PANEL_H
 
 class Panel
 {
 public:
 	SDL_Colour colour;
 	SDL_Surface* background;
-	SDL_Window* window;
 	SDL_Renderer* renderer;
 	int width = 0;
 	int height = 0;
@@ -16,11 +17,13 @@ public:
 	Panel(const char* _filename, SDL_Window* win);
 	Panel(SDL_Surface _background, SDL_Window* win);
 	~Panel();
-	void AttachWidget(SDL_Surface widget);
+	void AttachLabel();
+	void Render();
 
 private:
-	FlowManager flow();
+	SDL_Window* window;
 	SDL_Texture* texture;
-
 	void Initialize();
 };
+
+#endif //define PANEL_H

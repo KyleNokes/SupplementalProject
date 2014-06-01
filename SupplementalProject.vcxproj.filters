@@ -18,13 +18,13 @@
     <ClCompile Include="Panel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextArea.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Label.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextArea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,15 +41,54 @@
     <ClInclude Include="Label.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="mytexture.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RadioButtonGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="arial.ttf">
       <Filter>Resource Files</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="label.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="mytexture.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="otherText.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="uglyButton.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textarea.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="selct.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="dslct.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="radDesel.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="radSelect.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

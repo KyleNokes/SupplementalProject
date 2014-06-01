@@ -30,24 +30,20 @@ Panel::Panel(SDL_Surface _background, SDL_Window* win)
 
 Panel::~Panel()
 {
-	SDL_DestroyTexture(texture);
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_FreeSurface(background);
 	background = nullptr;
 	colour.r, colour.g, colour.b, colour.a, width, height = NULL;
+	Initialize();
 }
 
 void Panel::Initialize()
 {
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	
-	texture = SDL_CreateTextureFromSurface(renderer, background);
-	SDL_FreeSurface(background);
+}
 
+void Panel::Render()
+{
+	texture = SDL_CreateTextureFromSurface(renderer, background);
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
-
-	SDL_Delay(2000);
 }
