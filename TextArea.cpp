@@ -1,5 +1,14 @@
 #include "TextArea.h"
 
+TextArea::~TextArea()
+{
+	SDL_StopTextInput();
+	x, y, w, h = 0;
+	text = "";
+	parent = nullptr;
+	font = nullptr;
+}
+
 TextArea::TextArea(int _x, int _y, int _w, int _h, SDL_Colour _txtColour, Panel* _parent)
 {
 	x = _x;

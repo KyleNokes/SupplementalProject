@@ -13,7 +13,7 @@ public:
 	SDL_Colour bgColour;
 	SDL_Colour txtColour;
 	std::string text = "Enter Text here";
-
+	~TextArea();
 	TextArea(int _x, int _y, int _w, int _h, SDL_Colour _txtColour, Panel* parentSurface);
 	void EditText(SDL_Event* event);
 	virtual void Render();

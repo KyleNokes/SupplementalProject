@@ -33,10 +33,10 @@ int main(int argc, char** argv)
 	//Label myLabel = Label(0, 0, "Default text is default", blue, black, &myPanel);
 	Button myButton = Button(50, 50,"Button", "uglyButton.bmp", black, &myPanel);
 	//Button myButton = Button(50, 50, "Text on Button", green, white, &myPanel);
-	TextArea textArea = TextArea(200, 200, 200, 100, black, &myPanel);
+	//RadioButton rad = RadioButton(400, 325, false, &myPanel, "Radio Button");
+	RadioButtonGroup rad = RadioButtonGroup(5, 400, 325, &myPanel);
 	CheckBox box = CheckBox(400, 300, true, &myPanel, "This are checkbox");
-	RadioButton rad = RadioButton(400, 325, false, &myPanel, "Radio Button");
-	//RadioButtonGroup rad = RadioButtonGroup(5, 400, 325, &myPanel);
+	TextArea textArea = TextArea(200, 200, 200, 100, black, &myPanel);
 	TextField field = TextField(10, 500, 150, black, &myPanel);
 
 	while (quit == false)
@@ -46,8 +46,8 @@ int main(int argc, char** argv)
 			textArea.EditText(&event);
 			field.EditText(&event);
 			box.Clicked(&event);
-			rad.Clicked(&event);
-			//rad.HandleClick(&event);
+			//rad.Clicked(&event);
+			rad.HandleClick(&event);
 
 			if (myButton.MouseClicked(&event))
 			{
@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 				myButton.Render();
 				textArea.Render();
 				box.Render();
-				//rad.Render();
+				rad.Render();
 				field.Render();
 
 				myPanel.Render();
@@ -76,5 +76,6 @@ int main(int argc, char** argv)
 				quit = true;
 		}
 	}
-	return 0;
+	SDL_DestroyWindow(window);
+	return 1;
 }

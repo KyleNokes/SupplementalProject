@@ -36,6 +36,9 @@
     <ClCompile Include="RadioButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextField.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Panel.h">

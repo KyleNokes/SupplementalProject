@@ -5,19 +5,22 @@ RadioButtonGroup::RadioButtonGroup()
 
 RadioButtonGroup::~RadioButtonGroup()
 {
-	delete[] buttons;
+	for (int i = 0; i < numButtons; i++)
+	{
+		buttons[i]->~RadioButton();
+	}
+	buttons.clear();
 }
 
-RadioButtonGroup::RadioButtonGroup(int _numButtons, int _x, int _y, Panel* _parent)
+RadioButtonGroup::RadioButtonGroup(Uint32 _numButtons, int _x, int _y, Panel* _parent)
 {
 	numButtons = _numButtons;
-	buttons[numButtons] = new RadioButton();
-	buttons[0] = new RadioButton(_x, _y, true, _parent, "0");
+	buttons.push_back (new RadioButton(_x, _y, true, _parent, "Radio Button"));
 
 	for (int i = 1; i < numButtons; i++)
 	{
 		int newY = buttons[i - 1]->position.y + buttons[0]->position.h + 20;
-		buttons[i] = new RadioButton(_x, newY, false, _parent, "");
+		buttons.push_back(new RadioButton(_x, newY, false, _parent, "Radio Button"));
 	}
 }
 

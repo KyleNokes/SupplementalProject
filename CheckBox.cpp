@@ -3,10 +3,18 @@
 CheckBox::CheckBox()
 {}
 
+CheckBox::~CheckBox()
+{
+	label.~Label();
+	parent = nullptr;
+}
+
 CheckBox::CheckBox(int _x, int _y, bool _selected, Panel* _parent, const char* labelText)
 {
 	selected = _selected;
 	parent = _parent;
+	selTexture = SDL_LoadBMP("selct.bmp");
+	desTexture = SDL_LoadBMP("dslct.bmp");
 	position.x = parent->width - (parent->width - _x);
 	position.y = parent->height - (parent->height - _y);
 	black = { 0, 0, 0 };

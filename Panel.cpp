@@ -32,7 +32,7 @@ Panel::~Panel()
 {
 	background = nullptr;
 	colour.r, colour.g, colour.b, colour.a, width, height = NULL;
-	Initialize();
+	SDL_free(this);
 }
 
 void Panel::Initialize()

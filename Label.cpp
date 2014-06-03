@@ -7,6 +7,9 @@ Label::Label()
 
 Label::~Label()
 {
+	x, y = 0;
+	parent = nullptr;
+	labelText = NULL;
 }
 
 //Coloured text with transparent background

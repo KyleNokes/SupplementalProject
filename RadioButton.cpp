@@ -1,5 +1,11 @@
 #include "RadioButton.h"
 
+RadioButton::~RadioButton()
+{
+	label.~Label();
+	parent = nullptr;
+}
+
 bool RadioButton::Clicked(SDL_Event* event)
 {
 	if (event->type == SDL_MOUSEMOTION || SDL_MOUSEBUTTONDOWN || SDL_MOUSEBUTTONUP)
