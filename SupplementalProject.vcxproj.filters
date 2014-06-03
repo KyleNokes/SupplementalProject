@@ -27,6 +27,15 @@
     <ClCompile Include="TextArea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RadioButtongroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RadioButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Panel.h">

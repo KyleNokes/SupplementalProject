@@ -3,7 +3,7 @@
 #include "Button.h"
 #include "TextArea.h"
 #include "CheckBox.h"
-#include "RadioButton.h"
+#include "RadioButtonGroup.h"
 #include "TextField.h"
 
 int main(int argc, char** argv)
@@ -36,6 +36,7 @@ int main(int argc, char** argv)
 	TextArea textArea = TextArea(200, 200, 200, 100, black, &myPanel);
 	CheckBox box = CheckBox(400, 300, true, &myPanel, "This are checkbox");
 	RadioButton rad = RadioButton(400, 325, false, &myPanel, "Radio Button");
+	//RadioButtonGroup rad = RadioButtonGroup(5, 400, 325, &myPanel);
 	TextField field = TextField(10, 500, 150, black, &myPanel);
 
 	while (quit == false)
@@ -46,6 +47,7 @@ int main(int argc, char** argv)
 			field.EditText(&event);
 			box.Clicked(&event);
 			rad.Clicked(&event);
+			//rad.HandleClick(&event);
 
 			if (myButton.MouseClicked(&event))
 			{
@@ -64,7 +66,7 @@ int main(int argc, char** argv)
 				myButton.Render();
 				textArea.Render();
 				box.Render();
-				rad.Render();
+				//rad.Render();
 				field.Render();
 
 				myPanel.Render();
