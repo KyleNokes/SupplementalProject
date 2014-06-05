@@ -26,6 +26,7 @@ public:
 
 private:
 	bool coloured = false;
+	bool transparent = false;
 	SDL_Surface* message;
 	SDL_Rect* txtPos = new SDL_Rect;
 	TTF_Font* font = TTF_OpenFont("Arial.ttf", 20);

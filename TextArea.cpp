@@ -7,6 +7,7 @@ TextArea::~TextArea()
 	text = "";
 	parent = nullptr;
 	font = nullptr;
+	SDL_free(this);
 }
 
 TextArea::TextArea(int _x, int _y, int _w, int _h, SDL_Colour _txtColour, Panel* _parent)
@@ -46,13 +47,17 @@ void TextArea::EditText(SDL_Event* event)
 			selection = event->edit.length;
 			break;
 		case SDL_TEXTINPUT:
-			text.append(event->text.text);
+			text += event->text.text;
 			break;
 		case SDL_KEYDOWN:
 			if (event->key.keysym.sym == SDLK_BACKSPACE && text.length() > 0)
 				text.pop_back();
-			if (event->key.keysym.sym == SDLK_RETURN)
+			else if (event->key.keysym.sym == SDLK_RETURN)
 				text.append("\n");
+			else if (event->key.keysym.mod == SDLK_c && SDL_GetModState() & KMOD_CTRL)
+				SDL_SetClipboardText(text.c_str());
+			else if (event->key.keysym.mod == SDLK_v && SDL_GetModState() & KMOD_CTRL)
+				text += SDL_GetClipboardText();
 			break;
 		}
 	}
@@ -96,6 +101,6 @@ void TextArea::Render()
 	SDL_FillRect(parent->background, background, SDL_MapRGB(parent->background->format, 255, 255, 255));
 	SDL_BlitSurface(message, NULL, parent->background, position);
 
-	if (position->h > background->h)
+	if (position->h > background->h && position->w > background->w)
 		SDL_StopTextInput();
 }

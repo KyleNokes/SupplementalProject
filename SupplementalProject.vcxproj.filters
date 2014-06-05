@@ -44,9 +44,6 @@
     <ClInclude Include="Panel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FlowManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TextArea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -100,6 +97,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="radSelect.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="uglyClicked.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="bestTexture.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

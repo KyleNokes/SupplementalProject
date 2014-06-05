@@ -8,9 +8,8 @@ Panel::Panel(SDL_Colour _colour, SDL_Window* win)
 {
 	colour = _colour;
 	window = win;
+	coloured = true;
 	SDL_GetWindowSize(window, &width, &height);
-	background = SDL_GetWindowSurface(window);
-	SDL_FillRect(SDL_GetWindowSurface(window), NULL, SDL_MapRGB(background->format, colour.r, colour.g, colour.b));
 	Initialize();
 }
 
@@ -30,7 +29,10 @@ Panel::Panel(SDL_Surface _background, SDL_Window* win)
 
 Panel::~Panel()
 {
-	background = nullptr;
+	SDL_DestroyTexture(texture);
+	SDL_DestroyRenderer(renderer);
+	SDL_free(window);
+	SDL_free(background);
 	colour.r, colour.g, colour.b, colour.a, width, height = NULL;
 	SDL_free(this);
 }
@@ -42,6 +44,17 @@ void Panel::Initialize()
 
 void Panel::Render()
 {
+	if (coloured)
+	{
+		background = SDL_GetWindowSurface(window);
+		SDL_FillRect(SDL_GetWindowSurface(window), NULL, SDL_MapRGB(background->format, colour.r, colour.g, colour.b));
+	}
+
+	if (!coloured)
+	{
+
+	}
+
 	texture = SDL_CreateTextureFromSurface(renderer, background);
 	SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, texture, NULL, NULL);

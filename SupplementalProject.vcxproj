@@ -92,7 +92,6 @@
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="CheckBox.h" />
-    <ClInclude Include="FlowManager.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="RadioButton.h" />
@@ -104,6 +103,7 @@
     <Font Include="arial.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="bestTexture.bmp" />
     <Image Include="dslct.bmp" />
     <Image Include="label.bmp" />
     <Image Include="mytexture.bmp" />
@@ -113,6 +113,7 @@
     <Image Include="selct.bmp" />
     <Image Include="textarea.bmp" />
     <Image Include="uglyButton.bmp" />
+    <Image Include="uglyClicked.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,6 +13,8 @@ public:
 	Panel* parent;
 	SDL_Surface* selTexture;
 	SDL_Surface* desTexture;
+	Label label = Label();
+	SDL_Colour black;
 	~CheckBox();
 	explicit CheckBox();
 	explicit CheckBox(int _x, int _y, bool _selected, Panel* _parent, const char* labelText);
@@ -20,8 +22,6 @@ public:
 	void Render();
 
 protected:
-	Label label = Label();
-	SDL_Colour black;
 	SDL_Surface* background;
 };
 #endif // !CHECKBOX_H

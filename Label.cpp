@@ -20,8 +20,7 @@ Label::Label(int _x, int _y, const char* _text, SDL_Colour _txtColour, Panel* _p
 	parent = _parent;
 	labelText = _text;
 	txtColour = _txtColour;
-	background = TTF_RenderText_Blended(font, labelText, txtColour);
-	coloured = true;
+	transparent = true;
 }
 
 //Coloured text with Coloured background
@@ -33,7 +32,6 @@ Label::Label(int _x, int _y, const char* _text, SDL_Color _colour, SDL_Colour _t
 	colour = _colour;
 	labelText = _text;
 	txtColour = _txtColour;
-	background = TTF_RenderText(font, labelText, txtColour, colour);
 	coloured = true;
 }
 
@@ -59,12 +57,16 @@ void Label::Render()
 {
 	position->x = parent->width - (parent->width - x);
 	position->y = parent->height - (parent->height - y);
-	if (!coloured)
+	if (!coloured && !transparent)
 	{
 		message = TTF_RenderText_Blended(font, labelText, txtColour);
 		txtPos->x = background->clip_rect.x + (background->w / 2) - message->clip_rect.w / 2;
 		txtPos->y = background->clip_rect.y + (background->h / 2) - message->clip_rect.h / 2;
 		SDL_BlitSurface(message, NULL, background, txtPos);
 	}
+	if (coloured)
+		background = TTF_RenderText(font, labelText, txtColour, colour);
+	if (transparent)
+		background = TTF_RenderText_Blended(font, labelText, txtColour);
 	SDL_BlitSurface(background, NULL, parent->background, position);
 }

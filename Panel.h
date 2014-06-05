@@ -17,10 +17,10 @@ public:
 	Panel(const char* _filename, SDL_Window* win);
 	Panel(SDL_Surface _background, SDL_Window* win);
 	~Panel();
-	void AttachLabel();
 	void Render();
 
 private:
+	bool coloured = false;
 	SDL_Window* window;
 	SDL_Texture* texture;
 	void Initialize();
